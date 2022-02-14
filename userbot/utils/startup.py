@@ -48,7 +48,7 @@ async def setup_bot():
     # Config.TG_BOT_USERNAME = f"@{bot_details.username}"
     # await catub.start(bot_token=Config.TG_BOT_USERNAME)
     catub.me = await catub.get_me()
-    catub.uid = utils.get_peer_id(catub.me)
+    catub.uid = catub.tgbot.uid = utils.get_peer_id(catub.me)
     if Config.OWNER_ID == 0:
         Config.OWNER_ID = utils.get_peer_id(catub.me)
 
@@ -64,12 +64,12 @@ async def startupmessage():
     """
     try:
         if BOTLOG:
-            Config.CATUBLOGO = await catub.send_file(
+            Config.CATUBLOGO = await catub.tgbot.send_file(
                 BOTLOG_CHATID,
                 "https://telegra.ph/file/4e3ba8e8f7e535d5a2abe.jpg",
                 caption="**Your CatUserbot has been started successfully.**",
+                buttons=[(Button.url("Support", "https://t.me/catuserbot"),)],
             )
-                #buttons=[(Button.url("Support", "https://t.me/catuserbot"),)],
     except Exception as e:
         LOGS.error(e)
         return None
