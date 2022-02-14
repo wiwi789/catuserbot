@@ -7,7 +7,6 @@ from pathlib import Path
 from telethon import _tl as types
 from telethon._misc import utils
 from telethon._tl import fn as functions
-from telethon.types import Button
 
 from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
@@ -69,7 +68,7 @@ async def startupmessage():
                 "https://telegra.ph/file/4e3ba8e8f7e535d5a2abe.jpg",
                 caption="**Your CatUserbot has been started successfully.**",
             )
-                #buttons=[(Button.url("Support", "https://t.me/catuserbot"),)],
+            # buttons=[(Button.url("Support", "https://t.me/catuserbot"),)],
     except Exception as e:
         LOGS.error(e)
         return None
