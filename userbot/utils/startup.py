@@ -7,7 +7,6 @@ from pathlib import Path
 from telethon import _tl as types
 from telethon._misc import utils
 from telethon._tl import fn as functions
-from telethon.types import Button
 
 from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
