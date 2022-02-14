@@ -44,8 +44,8 @@ async def setup_bot():
 #                catub._session.set_dc(option.id, option.ip_address, option.port)
 #                catub._session.save()
     #                 break
-    bot_details = await tgbot.get_me()
-    Config.TG_BOT_USERNAME = f"@{bot_details.username}"
+    #bot_details = await tgbot.get_me()
+    #Config.TG_BOT_USERNAME = f"@{bot_details.username}"
     # await catub.start(bot_token=Config.TG_BOT_USERNAME)
     catub.me = await catub.get_me()
     catub.uid = catub.tgbot.uid = utils.get_peer_id(catub.me)
