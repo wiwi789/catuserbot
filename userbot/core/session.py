@@ -1,6 +1,6 @@
 import sys
 
-from telethon.sessions import StringSession
+from telethon._sessions import StringSession
 
 from ..Config import Config
 from .client import CatUserBotClient
@@ -23,7 +23,7 @@ try:
         app_version=__version__,
         #         connection=ConnectionTcpAbridged,
         auto_reconnect=True,
-        #         connect_retries=None,
+        connect_retries=0,
     )
 except Exception as e:
     print(f"STRING_SESSION - {e}")
@@ -38,5 +38,5 @@ tgbot = CatUserBotClient(
     app_version=__version__,
     #     connection=ConnectionTcpAbridged,
     auto_reconnect=True,
-    #     connect_retries=None,
+    connect_retries=0,
 ).start(bot_token=Config.TG_BOT_TOKEN)
