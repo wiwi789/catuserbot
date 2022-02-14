@@ -4,10 +4,10 @@ import sys
 from datetime import timedelta
 from pathlib import Path
 
-from telethon.types import Button
-from telethon import _tl as types 
-from telethon._tl import fn as functions
+from telethon import _tl as types
 from telethon._misc import utils
+from telethon._tl import fn as functions
+from telethon.types import Button
 
 from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
@@ -28,32 +28,34 @@ cmdhr = Config.COMMAND_HAND_LER
 
 
 async def setup_bot():
-        """
-        To set up bot for userbot
-        """
+    """
+    To set up bot for userbot
+    """
     # try:
-        await catub.connect()
-#         config = await catub(functions.help.GetConfig())
-#         for option in config.dc_options:
-#             if option.ip_address == catub._session.server_address:
-#                 if catub.session.dc_id != option.id:
-#                     LOGS.warning(
-#                         f"Fixed DC ID in session from {catub.session.dc_id}"
-#                         f" to {option.id}"
-#                     )
-#                 catub.session.set_dc(option.id, option.ip_address, option.port)
-#                 catub.session.save()
-#                 break
-        bot_details = await tgbot.get_me()
-        Config.TG_BOT_USERNAME = f"@{bot_details.username}"
-        # await catub.start(bot_token=Config.TG_BOT_USERNAME)
-        catub.me = await catub.get_me()
-        catub.uid = catub.tgbot.uid = utils.get_peer_id(catub.me)
-        if Config.OWNER_ID == 0:
-            Config.OWNER_ID = utils.get_peer_id(catub.me)
-    # except Exception as e:
-    #     LOGS.error(f"STRING_SESSION - {e}")
-    #     sys.exit()
+    await catub.connect()
+    #         config = await catub(functions.help.GetConfig())
+    #         for option in config.dc_options:
+    #             if option.ip_address == catub._session.server_address:
+    #                 if catub.session.dc_id != option.id:
+    #                     LOGS.warning(
+    #                         f"Fixed DC ID in session from {catub.session.dc_id}"
+    #                         f" to {option.id}"
+    #                     )
+    #                 catub.session.set_dc(option.id, option.ip_address, option.port)
+    #                 catub.session.save()
+    #                 break
+    bot_details = await tgbot.get_me()
+    Config.TG_BOT_USERNAME = f"@{bot_details.username}"
+    # await catub.start(bot_token=Config.TG_BOT_USERNAME)
+    catub.me = await catub.get_me()
+    catub.uid = catub.tgbot.uid = utils.get_peer_id(catub.me)
+    if Config.OWNER_ID == 0:
+        Config.OWNER_ID = utils.get_peer_id(catub.me)
+
+
+# except Exception as e:
+#     LOGS.error(f"STRING_SESSION - {e}")
+#     sys.exit()
 
 
 async def startupmessage():

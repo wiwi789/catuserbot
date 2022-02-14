@@ -291,7 +291,7 @@ async def get_anime(event):
     try:
         anime = anime[0]
         anime = anime.replace("-n", "")
-        input_str = input_str.replace(f'-n{anime}', "")
+        input_str = input_str.replace(f"-n{anime}", "")
         anime = int(anime)
     except IndexError:
         anime = 0
@@ -468,7 +468,7 @@ async def character(event):
         ],
     },
 )
-async def anime_download(event):    # sourcery no-metrics
+async def anime_download(event):  # sourcery no-metrics
     "Anime download links."
     search_query = event.pattern_match.group(2)
     input_str = event.pattern_match.group(1)

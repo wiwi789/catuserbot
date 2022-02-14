@@ -1,13 +1,6 @@
 from asyncio import sleep
 
-from telethon.errors import (
-    ChatAdminRequiredError,
-    FloodWaitError,
-    MessageNotModifiedError,
-    UserAdminInvalidError,
-)
-from telethon._tl import fn
-from telethon._tl.fn.channels import EditBannedRequest
+from telethon._misc.utils import get_display_name
 from telethon._tl import (
     ChannelParticipantsAdmins,
     ChannelParticipantsBanned,
@@ -19,8 +12,15 @@ from telethon._tl import (
     UserStatusOffline,
     UserStatusOnline,
     UserStatusRecently,
+    fn,
 )
-from telethon._misc.utils import get_display_name
+from telethon._tl.fn.channels import EditBannedRequest
+from telethon.errors import (
+    ChatAdminRequiredError,
+    FloodWaitError,
+    MessageNotModifiedError,
+    UserAdminInvalidError,
+)
 
 from userbot import catub
 
@@ -184,9 +184,7 @@ async def _(event):
         total += 1
         rights = ChatBannedRights(until_date=0, view_messages=False)
         try:
-            await event.client(
-                fn.channels.EditBannedRequest(event.chat_id, i, rights)
-            )
+            await event.client(fn.channels.EditBannedRequest(event.chat_id, i, rights))
         except FloodWaitError as e:
             LOGS.warn(f"A flood wait of {e.seconds} occurred.")
             await catevent.edit(
@@ -230,7 +228,7 @@ async def _(event):
     },
     groups_only=True,
 )
-async def rm_deletedacc(show):    # sourcery no-metrics
+async def rm_deletedacc(show):  # sourcery no-metrics
     "To check deleted accounts and clean"
     flag = show.pattern_match.group(1)
     con = show.pattern_match.group(2).lower()
@@ -293,14 +291,14 @@ async def rm_deletedacc(show):    # sourcery no-metrics
                         event, "`I don't have ban rights in this group`", 5
                     )
                 except FloodWaitError as e:
-                    LOGS.warn(f'A flood wait of {e.seconds} occurred.')
+                    LOGS.warn(f"A flood wait of {e.seconds} occurred.")
                     await event.edit(
-                        f'__A wait of {readable_time(e.seconds)} needed again to continue the process. Untill Now {del_u} users are cleaned.__'
+                        f"__A wait of {readable_time(e.seconds)} needed again to continue the process. Untill Now {del_u} users are cleaned.__"
                     )
 
                     await sleep(e.seconds + 5)
                     await event.edit(
-                        '__Ok the wait is over .I am cleaning all deleted accounts in this group__'
+                        "__Ok the wait is over .I am cleaning all deleted accounts in this group__"
                     )
 
                 except UserAdminInvalidError:
@@ -333,14 +331,14 @@ async def rm_deletedacc(show):    # sourcery no-metrics
                         event, "`I don't have ban rights in this group`", 5
                     )
                 except FloodWaitError as e:
-                    LOGS.warn(f'A flood wait of {e.seconds} occurred.')
+                    LOGS.warn(f"A flood wait of {e.seconds} occurred.")
                     await event.edit(
-                        f'__A wait of {readable_time(e.seconds)} needed again to continue the process. Untill Now {del_u} users are cleaned.__'
+                        f"__A wait of {readable_time(e.seconds)} needed again to continue the process. Untill Now {del_u} users are cleaned.__"
                     )
 
                     await sleep(e.seconds + 5)
                     await event.edit(
-                        '__Ok the wait is over .I am cleaning all deleted accounts in restricted or banned users list in this group__'
+                        "__Ok the wait is over .I am cleaning all deleted accounts in restricted or banned users list in this group__"
                     )
 
                 except Exception as e:

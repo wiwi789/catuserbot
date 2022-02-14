@@ -2,13 +2,7 @@ from datetime import datetime
 from math import sqrt
 
 from emoji import emojize
-from telethon.errors import (
-    ChannelInvalidError,
-    ChannelPrivateError,
-    ChannelPublicGroupNaError,
-)
-from telethon._tl.fn.channels import GetFullChannelRequest, GetParticipantsRequest
-from telethon._tl.fn.messages import GetFullChatRequest, GetHistoryRequest
+from telethon._misc.utils import get_input_location
 from telethon._tl import (
     ChannelParticipantAdmin,
     ChannelParticipantCreator,
@@ -16,7 +10,13 @@ from telethon._tl import (
     ChannelParticipantsBots,
     MessageActionChannelMigrateFrom,
 )
-from telethon._misc.utils import get_input_location
+from telethon._tl.fn.channels import GetFullChannelRequest, GetParticipantsRequest
+from telethon._tl.fn.messages import GetFullChatRequest, GetHistoryRequest
+from telethon.errors import (
+    ChannelInvalidError,
+    ChannelPrivateError,
+    ChannelPublicGroupNaError,
+)
 
 from userbot import catub
 

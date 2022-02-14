@@ -7,25 +7,25 @@ import random
 import re
 import string
 import urllib.request
-from ..core.events import NewMessage
+
 import cloudscraper
 import emoji as catemoji
 from bs4 import BeautifulSoup as bs
 from PIL import Image
-from telethon import events
-from telethon.errors import YouBlockedUserError
 from telethon import _tl
-from telethon._tl.fn.messages import GetStickerSet
-from telethon._tl.fn.messages import ImportChatInvite as Get
 from telethon._tl import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
     InputStickerSetID,
     MessageMediaPhoto,
 )
+from telethon._tl.fn.messages import GetStickerSet
+from telethon._tl.fn.messages import ImportChatInvite as Get
+from telethon.errors import YouBlockedUserError
 
 from userbot import catub
 
+from ..core.events import NewMessage
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.functions import animator, crop_and_divide
 from ..helpers.tools import media_type
@@ -759,7 +759,7 @@ async def pic2packcmd(event):
     img.paste(image, ((www - w) // 2, 0))
     newimg = img.resize((100, 100))
     new_img = io.BytesIO()
-    new_img.name = f'{name}.png'
+    new_img.name = f"{name}.png"
     images = await crop_and_divide(img)
     newimg.save(new_img)
     new_img.seek(0)
@@ -775,7 +775,7 @@ async def pic2packcmd(event):
             await conv.wait_event(NewMessage(incoming=True, from_users=chat))
             for im in images:
                 img = io.BytesIO(im)
-                img.name =  f"{name}.png"
+                img.name = f"{name}.png"
                 img.seek(0)
                 await event.client.send_file(chat, img, force_document=True)
                 await conv.wait_event(NewMessage(incoming=True, from_users=chat))
@@ -792,9 +792,7 @@ async def pic2packcmd(event):
             await event.client.send_file(chat, new_img, force_document=True)
             await conv.wait_event(NewMessage(incoming=True, from_users=chat))
             await event.client.send_message(chat, name)
-            ending = await conv.wait_event(
-                NewMessage(incoming=True, from_users=chat)
-            )
+            ending = await conv.wait_event(NewMessage(incoming=True, from_users=chat))
             await event.client.send_read_acknowledge(conv.chat_id)
             for packname in ending.raw_text.split():
                 stick_pack_name = packname

@@ -2,12 +2,13 @@ import re
 from collections import defaultdict, deque
 
 import regex
-from telethon import events
 from telethon import _tl as types
-from ..core.events import NewMessage, MessageEdited
+from telethon import events
+
 from userbot import catub
 
 from ..Config import Config
+from ..core.events import MessageEdited, NewMessage
 
 plugin_category = "tools"
 

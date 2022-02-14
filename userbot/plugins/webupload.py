@@ -65,7 +65,7 @@ async def labstack(event):
     command_to_exec = [
         "curl",
         "-F",
-        f'files=@{filebase}',
+        f"files=@{filebase}",
         "-H",
         "Transfer-Encoding: chunked",
         "-H",

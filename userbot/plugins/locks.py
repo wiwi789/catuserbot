@@ -1,14 +1,13 @@
 import base64
 
+from telethon import _tl as types
 from telethon import events
-
-from telethon import _tl as types 
+from telethon._misc.utils import get_display_name
+from telethon._tl import ChatBannedRights
 from telethon._tl import fn as functions
 from telethon._tl.fn.channels import EditBanned
 from telethon._tl.fn.messages import EditChatDefaultBannedRights
 from telethon._tl.fn.messages import ImportChatInvite as Get
-from telethon._tl import ChatBannedRights
-from telethon._misc.utils import get_display_name
 
 from userbot import catub
 
@@ -196,9 +195,7 @@ async def _(event):  # sourcery no-metrics
         )
         try:
             await event.client(
-                EditChatDefaultBannedRights(
-                    peer=peer_id, banned_rights=lock_rights
-                )
+                EditChatDefaultBannedRights(peer=peer_id, banned_rights=lock_rights)
             )
             await edit_or_reply(event, f"`Locked {locktype} for this chat !!`")
         except BaseException as e:
@@ -384,9 +381,7 @@ async def _(event):  # sourcery no-metrics
         )
         try:
             await event.client(
-                EditChatDefaultBannedRights(
-                    peer=peer_id, banned_rights=unlock_rights
-                )
+                EditChatDefaultBannedRights(peer=peer_id, banned_rights=unlock_rights)
             )
             await edit_or_reply(event, f"`Unlocked {locktype} for this chat !!`")
         except BaseException as e:
@@ -1115,9 +1110,7 @@ async def _(event):
                 is_ban_able = True
                 try:
                     await event.client(
-                        functions.channels.EditBanned(
-                            event.chat_id, user_obj, rights
-                        )
+                        functions.channels.EditBanned(event.chat_id, user_obj, rights)
                     )
                 except Exception as e:
                     await event.reply(

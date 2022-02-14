@@ -1,5 +1,6 @@
-import sys
 import asyncio
+import sys
+
 import userbot
 from userbot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
@@ -17,7 +18,7 @@ from .utils import (
 LOGS = logging.getLogger("CatUserbot")
 
 print(userbot.__copyright__)
-print(f'Licensed under the terms of the {userbot.__license__}')
+print(f"Licensed under the terms of the {userbot.__license__}")
 
 cmdhr = Config.COMMAND_HAND_LER
 
@@ -32,6 +33,7 @@ cmdhr = Config.COMMAND_HAND_LER
 LOGS.info("Starting Userbot")
 asyncio.run(setup_bot())
 LOGS.info("TG Bot Startup Completed")
+
 
 async def startup_process():
     await verifyLoggerGroup()
@@ -50,6 +52,7 @@ async def startup_process():
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
     await startupmessage()
     return
+
 
 asyncio.run(startup_process())
 

@@ -13,10 +13,10 @@ import fitz
 from PIL import Image, ImageDraw, ImageFilter, ImageOps
 from pymediainfo import MediaInfo
 from telethon import types
-from telethon.errors import PhotoInvalidDimensionsError
+from telethon._misc.utils import get_attributes
 from telethon._tl.fn.messages import ImportChatInvite as Get
 from telethon._tl.fn.messages import SendMedia
-from telethon._misc.utils import get_attributes
+from telethon.errors import PhotoInvalidDimensionsError
 
 from userbot import catub
 
@@ -479,7 +479,7 @@ async def on_file_to_photo(event):
         "usage": "{tr}gif quality ; fps(frames per second)",
     },
 )
-async def _(event):    # sourcery no-metrics
+async def _(event):  # sourcery no-metrics
     "Converts Given animated sticker to gif"
     if input_str := event.pattern_match.group(1):
         loc = input_str.split(";")

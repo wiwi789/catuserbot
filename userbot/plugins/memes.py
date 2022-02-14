@@ -8,8 +8,8 @@ import re
 
 import requests
 from cowpy import cow
-from telethon._tl.fn.users import GetFullUserRequest
 from telethon._tl import ChannelParticipantsAdmins, MessageEntityMentionName
+from telethon._tl.fn.users import GetFullUserRequest
 
 from userbot import catub
 
@@ -246,8 +246,7 @@ async def shout(args):
         text = " ".join(messagestr)
         result = [" ".join(text)]
         result.extend(
-            f'{symbol} ' + "  " * pos + symbol
-            for pos, symbol in enumerate(text[1:])
+            f"{symbol} " + "  " * pos + symbol for pos, symbol in enumerate(text[1:])
         )
 
         result = list("\n".join(result))
@@ -335,7 +334,7 @@ async def smrk(smk):
         await edit_or_reply(smk, "ツ")
         return
     if message == "dele":
-        await edit_or_reply(smk, f'{message}te the hellツ')
+        await edit_or_reply(smk, f"{message}te the hellツ")
     else:
         smirk = " ツ"
         reply_text = message + smirk
@@ -480,7 +479,7 @@ async def gbun(event):
                 jnl += "**Victim Nigga's username** : @{}\n".format(usname)
             if len(gbunVar) > 0:
                 gbunm = "`{}`".format(gbunVar)
-                gbunr = f'**Reason: **{gbunm}'
+                gbunr = f"**Reason: **{gbunm}"
                 jnl += gbunr
             else:
                 no_reason = "__Reason: Potential spammer. __"

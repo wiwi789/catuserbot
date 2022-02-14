@@ -1,18 +1,18 @@
-import typing
 import asyncio
+import typing
+
+from telethon import _tl, events
 from telethon._misc import hints
-from telethon import events, _tl
-from telethon.types import _custom
 from telethon._tl import (
     InputPeerChannel,
     InputPeerChat,
     InputPeerUser,
     MessageMediaWebPage,
 )
+from telethon.types import _custom
 
 from ..Config import Config
 from .managers import edit_or_reply
-
 
 
 class NewMessage(events.NewMessage, _custom.Message):
@@ -74,8 +74,7 @@ class NewMessage(events.NewMessage, _custom.Message):
 class MessageEdited(NewMessage):
     @classmethod
     def _build(cls, update, others, self_id, entities, client):
-        if isinstance(update, (_tl.UpdateEditMessage,
-                               _tl.UpdateEditChannelMessage)):
+        if isinstance(update, (_tl.UpdateEditMessage, _tl.UpdateEditChannelMessage)):
             return cls._new(client, update.message, entities, None)
 
 

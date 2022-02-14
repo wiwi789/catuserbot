@@ -3,10 +3,10 @@
 # included both cas(combot antispam service) and spamwatch (need to add more feaututres)
 
 from requests import get
+from telethon._misc.utils import get_display_name
+from telethon._tl import ChannelParticipantsAdmins
 from telethon.errors import ChatAdminRequiredError
 from telethon.events import ChatAction
-from telethon._tl import ChannelParticipantsAdmins
-from telethon._misc.utils import get_display_name
 
 from ..Config import Config
 from ..sql_helper.gban_sql_helper import get_gbanuser, is_gbanned

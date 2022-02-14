@@ -1,7 +1,7 @@
 import asyncio
 
-from telethon._tl.fn.channels import EditBannedRequest
 from telethon._tl import ChatBannedRights
+from telethon._tl.fn.channels import EditBannedRequest
 
 from ..sql_helper import antiflood_sql as sql
 from ..utils import is_admin

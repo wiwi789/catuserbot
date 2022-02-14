@@ -705,8 +705,8 @@ class googleimagesdownload:
         if any(map(lambda extension: extension in image_name, extensions)):
             file_name = main_directory + "/" + image_name
         else:
-            file_name = f'{main_directory}/' + image_name + ".jpg"
-            image_name = f'{image_name}.jpg'
+            file_name = f"{main_directory}/" + image_name + ".jpg"
+            image_name = f"{image_name}.jpg"
 
         try:
             with open(file_name, "wb") as output_file:
@@ -736,7 +736,7 @@ class googleimagesdownload:
             l2 = content.find("&", l1)
             urll = content[l1:l2]
 
-            newurl = f'https://www.google.com/search?tbs=sbi:{urll}&site=search&sa=X'
+            newurl = f"https://www.google.com/search?tbs=sbi:{urll}&site=search&sa=X"
             req2 = urllib.request.Request(newurl, headers=headers)
             urllib.request.urlopen(req2)
             l3 = content.find("/search?sa=X&amp;q=")
@@ -900,7 +900,7 @@ class googleimagesdownload:
                     # add it to the built url
                     built_url += ext_param
                 else:
-                    built_url = f'{built_url},{ext_param}'
+                    built_url = f"{built_url},{ext_param}"
                 counter += 1
         built_url = lang_url + built_url + exact_size
         return built_url
@@ -979,7 +979,7 @@ class googleimagesdownload:
 
     # make directories
     def create_directories(self, main_directory, dir_name, thumbnail, thumbnail_only):
-        dir_name_thumbnail = f'{dir_name} - thumbnail'
+        dir_name_thumbnail = f"{dir_name} - thumbnail"
         # make a search keyword  directory
         try:
             if not os.path.exists(main_directory):
@@ -1016,7 +1016,7 @@ class googleimagesdownload:
         ignore_urls,
     ):
         if print_urls or no_download:
-            print(f'Image URL: {image_url}')
+            print(f"Image URL: {image_url}")
         if no_download:
             return "success", "Printed url without downloading"
         try:
@@ -1046,61 +1046,58 @@ class googleimagesdownload:
                     with open(path, "wb") as output_file:
                         output_file.write(data)
                     if save_source:
-                        list_path = f'{main_directory}/{save_source}.txt'
+                        list_path = f"{main_directory}/{save_source}.txt"
                         with open(list_path, "a") as list_file:
                             list_file.write(path + "\t" + img_src + "\n")
                 except OSError as e:
-                    download_status = 'fail'
+                    download_status = "fail"
                     download_message = (
-                        'OSError on an image...trying next one...'
-                        + ' Error: '
-                        + str(e)
+                        "OSError on an image...trying next one..." + " Error: " + str(e)
                     )
 
                 except IOError as e:
-                    download_status = 'fail'
+                    download_status = "fail"
                     download_message = (
-                        'IOError on an image...trying next one...'
-                        + ' Error: '
-                        + str(e)
+                        "IOError on an image...trying next one..." + " Error: " + str(e)
                     )
 
                 download_status = "success"
-                download_message = f'Completed Image Thumbnail ====> {return_image_name}'
+                download_message = (
+                    f"Completed Image Thumbnail ====> {return_image_name}"
+                )
 
                 # image size parameter
                 if print_size:
                     print("Image Size: " + str(self.file_size(path)))
 
             except UnicodeEncodeError as e:
-                download_status = 'fail'
+                download_status = "fail"
                 download_message = (
-                    'UnicodeEncodeError on an image...trying next one...'
-                    + ' Error: '
+                    "UnicodeEncodeError on an image...trying next one..." + " Error: "
                 ) + str(e)
 
         except HTTPError as e:
-            download_status = 'fail'
+            download_status = "fail"
             download_message = (
-                'HTTPError on an image...trying next one...' + ' Error: ' + str(e)
+                "HTTPError on an image...trying next one..." + " Error: " + str(e)
             )
 
         except URLError as e:
-            download_status = 'fail'
+            download_status = "fail"
             download_message = (
-                'URLError on an image...trying next one...' + ' Error: ' + str(e)
+                "URLError on an image...trying next one..." + " Error: " + str(e)
             )
 
         except ssl.CertificateError as e:
-            download_status = 'fail'
+            download_status = "fail"
             download_message = (
-                'CertificateError on an image...trying next one...' + ' Error: '
+                "CertificateError on an image...trying next one..." + " Error: "
             ) + str(e)
 
         except IOError as e:
-            download_status = 'fail'
+            download_status = "fail"
             download_message = (
-                'IOError on an image...trying next one...' + ' Error: ' + str(e)
+                "IOError on an image...trying next one..." + " Error: " + str(e)
             )
 
         return download_status, download_message

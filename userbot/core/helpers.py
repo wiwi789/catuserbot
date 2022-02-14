@@ -1,7 +1,6 @@
 import logging
 from typing import Union
 
-from telethon import _tl as types
 from telethon._misc.utils import get_display_name
 
 from .events import NewMessage
@@ -31,7 +30,7 @@ async def get_chat_link(
         extra = f"[{name}](tg://user?id={entity.id})"
     else:
         if hasattr(entity, "username") and entity.username is not None:
-            username = f'@{entity.username}'
+            username = f"@{entity.username}"
         else:
             username = entity.id
         if reply is not None:

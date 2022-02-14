@@ -5,10 +5,10 @@ import re
 from functools import partial
 from random import choice
 
+from telethon import _tl as types
 from telethon import events
 from telethon._misc.markdown import DEFAULT_URL_RE
-from telethon import _tl as types
-from telethon._tl.fn.messages import EditMessageRequest
+from telethon._misc.utils import add_surrogate, del_surrogate
 from telethon._tl import (
     MessageEntityBold,
     MessageEntityCode,
@@ -17,7 +17,7 @@ from telethon._tl import (
     MessageEntityTextUrl,
     MessageEntityUnderline,
 )
-from telethon._misc.utils import add_surrogate, del_surrogate
+from telethon._tl.fn.messages import EditMessageRequest
 
 from userbot import catub
 from userbot.core.logger import logging

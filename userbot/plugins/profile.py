@@ -1,11 +1,11 @@
 import os
 
-from telethon.errors import UsernameOccupiedError
+from telethon._tl import Channel, Chat, InputPhoto, User
 from telethon._tl import fn as functions
 from telethon._tl.fn.account import UpdateUsernameRequest
 from telethon._tl.fn.channels import GetAdminedPublicChannelsRequest
 from telethon._tl.fn.photos import DeletePhotosRequest, GetUserPhotosRequest
-from telethon._tl import Channel, Chat, InputPhoto, User
+from telethon.errors import UsernameOccupiedError
 
 from userbot import catub
 

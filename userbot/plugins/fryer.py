@@ -2,14 +2,13 @@ import io
 from random import randint, uniform
 
 from PIL import Image, ImageEnhance, ImageOps
-from telethon import events
-from telethon.errors import YouBlockedUserError
 from telethon._tl import DocumentAttributeFilename
+from telethon.errors import YouBlockedUserError
 
 from userbot import catub
 
-from ..core.managers import edit_or_reply
 from ..core.events import NewMessage
+from ..core.managers import edit_or_reply
 from ..helpers import reply_id
 
 plugin_category = "extra"
@@ -107,9 +106,7 @@ async def _(event):
     event = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation(chat) as conv:
         try:
-            response = conv.wait_event(
-                NewMessage(incoming=True, from_users=432858024)
-            )
+            response = conv.wait_event(NewMessage(incoming=True, from_users=432858024))
             await event.client.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:

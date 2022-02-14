@@ -1,6 +1,7 @@
+import asyncio
 import os
 from pathlib import Path
-import asyncio
+
 from telethon._tl import InputMessagesFilterDocument
 
 from ..Config import Config

@@ -6,10 +6,10 @@ from urllib import parse
 import nekos
 import requests
 from PIL import Image
-
-from telethon import _tl as types 
-from telethon._tl import fn as functions
+from telethon import _tl as types
 from telethon._misc import utils
+from telethon._tl import fn as functions
+
 from userbot import catub
 
 from ..helpers import reply_id

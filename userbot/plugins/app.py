@@ -29,7 +29,7 @@ async def app_search(event):
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
         page = requests.get(
-            f'https://play.google.com/store/search?q={final_name}&c=apps'
+            f"https://play.google.com/store/search?q={final_name}&c=apps"
         )
 
         str(page.status_code)
@@ -63,7 +63,7 @@ async def app_search(event):
             .img["data-src"]
         )
         app_details = "<a href='" + app_icon + "'>📲&#8203;</a>"
-        app_details += f' <b>{app_name}</b>'
+        app_details += f" <b>{app_name}</b>"
         app_details += (
             "\n\n<code>Developer :</code> <a href='"
             + app_dev_link

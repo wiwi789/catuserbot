@@ -19,22 +19,11 @@ from typing import (
 )
 
 from telethon import TelegramClient
-from telethon._misc import utils, helpers
 from telethon._crypto import AuthKey
-from telethon.errors import FloodWaitError
+from telethon._misc import helpers, utils
 from telethon._network import MTProtoSender
-from telethon._tl import LAYER
-from telethon._tl.fn import InvokeWithLayer
-from telethon._tl.fn.auth import (
-    ExportAuthorization,
-    ImportAuthorization,
-)
-from telethon._tl.fn.upload import (
-    GetFile,
-    SaveBigFilePart,
-    SaveFilePart,
-)
 from telethon._tl import (
+    LAYER,
     Document,
     InputDocumentFileLocation,
     InputFile,
@@ -44,6 +33,10 @@ from telethon._tl import (
     InputPhotoFileLocation,
     TypeInputFile,
 )
+from telethon._tl.fn import InvokeWithLayer
+from telethon._tl.fn.auth import ExportAuthorization, ImportAuthorization
+from telethon._tl.fn.upload import GetFile, SaveBigFilePart, SaveFilePart
+from telethon.errors import FloodWaitError
 
 try:
     from mautrix.crypto.attachments import async_encrypt_attachment

@@ -9,15 +9,15 @@ import os
 import re
 import textwrap
 from textwrap import wrap
-from ..core.events import NewMessage
+
 import requests
 from PIL import Image, ImageDraw, ImageFont
-from telethon import events
-from telethon.errors import YouBlockedUserError
 from telethon._misc.utils import get_display_name
+from telethon.errors import YouBlockedUserError
 
 from userbot import catub
 
+from ..core.events import NewMessage
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import convert_tosticker, media_type, process
 from ..helpers.utils import _cattools, reply_id
@@ -97,7 +97,7 @@ async def q_pic(event):  # sourcery no-metrics
                 ).content
             )
     text = "\n".join(textwrap.wrap(text, 25))
-    text = f'“{text}„'
+    text = f"“{text}„"
     font = ImageFont.truetype(FONT_FILE_TO_USE, 50)
     img = Image.open(pfp)
     if black:
@@ -253,9 +253,7 @@ async def _(event):
     catevent = await edit_or_reply(event, "```Making a Quote```")
     async with event.client.conversation(chat) as conv:
         try:
-            response = conv.wait_event(
-                NewMessage(incoming=True, from_users=1031952739)
-            )
+            response = conv.wait_event(NewMessage(incoming=True, from_users=1031952739))
             if messages_id != []:
                 await event.client.forward_messages(chat, messages_id, event.chat_id)
             elif message != "":

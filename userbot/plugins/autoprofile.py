@@ -13,8 +13,8 @@ from datetime import datetime
 import requests
 from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
-from telethon.errors import FloodWaitError
 from telethon._tl import fn
+from telethon.errors import FloodWaitError
 from urlextract import URLExtract
 
 from ..Config import Config
@@ -245,7 +245,7 @@ async def autobio_loop():
 async def animeprofilepic(collection_images):
     rnd = random.randint(0, len(collection_images) - 1)
     pack = collection_images[rnd]
-    pc = requests.get(f'http://getwallpapers.com/collection/{pack}').text
+    pc = requests.get(f"http://getwallpapers.com/collection/{pack}").text
     f = re.compile(r"/\w+/full.+.jpg")
     f = f.findall(pc)
     fy = "http://getwallpapers.com" + random.choice(f)
@@ -632,17 +632,13 @@ async def _(event):  # sourcery no-metrics
     if input_str == "autoname":
         if gvarstatus("autoname") is not None and gvarstatus("autoname") == "true":
             delgvar("autoname")
-            await event.client(
-                fn.account.UpdateProfileRequest(first_name=DEFAULTUSER)
-            )
+            await event.client(fn.account.UpdateProfileRequest(first_name=DEFAULTUSER))
             return await edit_delete(event, "`Autoname has been stopped now`")
         return await edit_delete(event, "`Autoname haven't enabled`")
     if input_str == "autobio":
         if gvarstatus("autobio") is not None and gvarstatus("autobio") == "true":
             delgvar("autobio")
-            await event.client(
-                fn.account.UpdateProfileRequest(about=DEFAULTUSERBIO)
-            )
+            await event.client(fn.account.UpdateProfileRequest(about=DEFAULTUSERBIO))
             return await edit_delete(event, "`Autobio has been stopped now`")
         return await edit_delete(event, "`Autobio haven't enabled`")
     if input_str == "spam":

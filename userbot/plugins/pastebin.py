@@ -5,8 +5,8 @@ import pygments
 import requests
 from pygments.formatters import ImageFormatter
 from pygments.lexers import Python3Lexer
-from telethon.errors import YouBlockedUserError
 from telethon._misc.utils import get_extension
+from telethon.errors import YouBlockedUserError
 from urlextract import URLExtract
 
 from userbot import catub
@@ -236,14 +236,14 @@ async def get_dogbin_content(event):
         resp.raise_for_status()
     except requests.exceptions.HTTPError as HTTPErr:
         return await catevent.edit(
-            f'**Request returned an unsuccessful status code.**\n\n__{HTTPErr}__'
+            f"**Request returned an unsuccessful status code.**\n\n__{HTTPErr}__"
         )
 
     except requests.exceptions.Timeout as TimeoutErr:
-        return await catevent.edit(f'**Request timed out.**__{TimeoutErr}__')
+        return await catevent.edit(f"**Request timed out.**__{TimeoutErr}__")
     except requests.exceptions.TooManyRedirects as RedirectsErr:
         return await catevent.edit(
-            f'**Request exceeded the configured number of maximum redirections.**__{RedirectsErr}__'
+            f"**Request exceeded the configured number of maximum redirections.**__{RedirectsErr}__"
         )
 
     reply_text = f"**Fetched dogbin URL content successfully!**\n\n**Content:** \n```{resp.text}```"

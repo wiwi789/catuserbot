@@ -9,10 +9,9 @@ from sys import setrecursionlimit
 from urllib import parse
 
 from pylast import LastFMNetwork, MalformedResponseError, User, WSError, md5
-from telethon.errors import AboutTooLongError
-from telethon.errors import FloodWaitError
 from telethon._tl.fn.account import UpdateProfileRequest
 from telethon._tl.fn.users import GetFullUserRequest
+from telethon.errors import AboutTooLongError, FloodWaitError
 
 from userbot import catub
 

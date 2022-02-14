@@ -3,12 +3,12 @@
 import os
 
 from telegraph import exceptions, upload_file
-from telethon import events
 from telethon.errors import YouBlockedUserError
-from ..core.events import NewMessage
+
 from userbot import catub
 
 from ..Config import Config
+from ..core.events import NewMessage
 from ..core.managers import edit_or_reply
 from . import awooify, baguette, convert_toimage, iphonex, lolice
 
@@ -34,9 +34,7 @@ async def _(catbot):
     event = await catbot.edit("```Processing```")
     async with catbot.client.conversation(chat) as conv:
         try:
-            response = conv.wait_event(
-                NewMessage(incoming=True, from_users=905164246)
-            )
+            response = conv.wait_event(NewMessage(incoming=True, from_users=905164246))
             await catbot.client.send_message(chat, reply_message)
             response = await response
         except YouBlockedUserError:

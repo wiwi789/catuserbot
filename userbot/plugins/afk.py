@@ -201,7 +201,9 @@ async def _(event):
             AFK_.reason = input_str
             AFK_.msg_link = False
         last_seen_status = await event.client(
-            types.functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
+            types.functions.account.GetPrivacyRequest(
+                types.InputPrivacyKeyStatusTimestamp()
+            )
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
             AFK_.afk_time = datetime.now()
@@ -265,7 +267,9 @@ async def _(event):
         input_str = event.pattern_match.group(1)
         AFK_.reason = input_str
         last_seen_status = await event.client(
-            types.functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
+            types.functions.account.GetPrivacyRequest(
+                types.InputPrivacyKeyStatusTimestamp()
+            )
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
             AFK_.afk_time = datetime.now()

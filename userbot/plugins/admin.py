@@ -1,24 +1,25 @@
 from asyncio import sleep
 
-from telethon.errors import (
-    BadRequestError,
-    ImageProcessFailedError,
-    PhotoCropSizeSmallError,
-)
-from telethon.errors import UserAdminInvalidError, UserIdInvalidError
-from telethon._tl.fn.channels import (
-    EditAdminRequest,
-    EditBannedRequest,
-    EditPhotoRequest,
-)
-from telethon._tl.fn.users import GetFullUserRequest
+from telethon._misc.utils import get_display_name
 from telethon._tl import (
     ChatAdminRights,
     ChatBannedRights,
     InputChatPhotoEmpty,
     MessageMediaPhoto,
 )
-from telethon._misc.utils import get_display_name
+from telethon._tl.fn.channels import (
+    EditAdminRequest,
+    EditBannedRequest,
+    EditPhotoRequest,
+)
+from telethon._tl.fn.users import GetFullUserRequest
+from telethon.errors import (
+    BadRequestError,
+    ImageProcessFailedError,
+    PhotoCropSizeSmallError,
+    UserAdminInvalidError,
+    UserIdInvalidError,
+)
 
 from userbot import catub
 
@@ -525,7 +526,7 @@ async def endmute(event):
     try:
         await event.client.kick_participant(event.chat_id, user.id)
     except Exception as e:
-        return await catevent.edit(f'{NO_PERM}\n{e}')
+        return await catevent.edit(f"{NO_PERM}\n{e}")
     if reason:
         await catevent.edit(
             f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"

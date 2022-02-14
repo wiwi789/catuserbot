@@ -4,9 +4,9 @@ import html
 import os
 
 from requests import get
+from telethon._misc.utils import get_input_location
 from telethon._tl.fn.photos import GetUserPhotosRequest
 from telethon._tl.fn.users import GetFullUserRequest
-from telethon._misc.utils import get_input_location
 
 from userbot import catub
 from userbot.core.logger import logging
@@ -109,7 +109,7 @@ async def _(event):
         if ban := spamwatch.get_ban(user_id):
             sw = f"**Spamwatch Banned :** `True` \n       **-**🤷‍♂️**Reason : **`{ban.reason}`"
         else:
-            sw = '**Spamwatch Banned :** `False`'
+            sw = "**Spamwatch Banned :** `False`"
     else:
         sw = "**Spamwatch Banned :**`Not Connected`"
     try:

@@ -1,10 +1,10 @@
 # created by @eve_enryu
 # edited & fix by @Jisan7509
 
-from telethon import events
 from telethon.errors import YouBlockedUserError
 
 from userbot import catub
+
 from ..core.events import NewMessage
 from ..core.managers import edit_or_reply
 
@@ -28,9 +28,7 @@ async def _(event):
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
-            response = conv.wait_event(
-                NewMessage(incoming=True, from_users=774181428)
-            )
+            response = conv.wait_event(NewMessage(incoming=True, from_users=774181428))
             await conv.send_message(f"/{firmware} {link}")
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
@@ -58,9 +56,7 @@ async def _(event):
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
-            response = conv.wait_event(
-                NewMessage(incoming=True, from_users=774181428)
-            )
+            response = conv.wait_event(NewMessage(incoming=True, from_users=774181428))
             await conv.send_message(f"/{vendor} {link}")
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
@@ -88,9 +84,7 @@ async def _(event):
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
-            response = conv.wait_event(
-                NewMessage(incoming=True, from_users=774181428)
-            )
+            response = conv.wait_event(NewMessage(incoming=True, from_users=774181428))
             await conv.send_message(f"/{specs} {link}")
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
@@ -118,9 +112,7 @@ async def _(event):
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
-            response = conv.wait_event(
-                NewMessage(incoming=True, from_users=774181428)
-            )
+            response = conv.wait_event(NewMessage(incoming=True, from_users=774181428))
             await conv.send_message(f"/{fboot} {link}")
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
@@ -148,9 +140,7 @@ async def _(event):
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
-            response = conv.wait_event(
-                NewMessage(incoming=True, from_users=774181428)
-            )
+            response = conv.wait_event(NewMessage(incoming=True, from_users=774181428))
             await conv.send_message(f"/{recovery} {link}")
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
@@ -178,9 +168,7 @@ async def _(event):
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
-            response = conv.wait_event(
-                NewMessage(incoming=True, from_users=774181428)
-            )
+            response = conv.wait_event(NewMessage(incoming=True, from_users=774181428))
             await conv.send_message(f"/{pitch} {link}")
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
@@ -208,9 +196,7 @@ async def _(event):
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
-            response = conv.wait_event(
-                NewMessage(incoming=True, from_users=774181428)
-            )
+            response = conv.wait_event(NewMessage(incoming=True, from_users=774181428))
             await conv.send_message(f"/{ofox} {link}")
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)

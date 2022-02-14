@@ -2,7 +2,6 @@
 import re
 from asyncio import sleep
 
-from telethon.errors import rpcbaseerrors
 from telethon._tl import (
     InputMessagesFilterDocument,
     InputMessagesFilterEmpty,
@@ -15,6 +14,7 @@ from telethon._tl import (
     InputMessagesFilterVideo,
     InputMessagesFilterVoice,
 )
+from telethon.errors import rpcbaseerrors
 
 from userbot import catub
 
@@ -236,7 +236,7 @@ async def purgeme(event):
         ],
     },
 )
-async def fastpurger(event):    # sourcery no-metrics
+async def fastpurger(event):  # sourcery no-metrics
     "To purge messages from the replied message"
     chat = await event.get_input_chat()
     msgs = []

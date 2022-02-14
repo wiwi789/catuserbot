@@ -211,7 +211,7 @@ async def group_unfban(event):
         ],
     },
 )
-async def quote_search(event):    # sourcery no-metrics
+async def quote_search(event):  # sourcery no-metrics
     "Add the federation to database."
     fedgroup = event.pattern_match.group(1)
     fedid = event.pattern_match.group(2)
@@ -268,7 +268,9 @@ async def quote_search(event):    # sourcery no-metrics
                     10,
                 )
             except Exception as e:
-                await edit_delete(catevent, f'**Error while fecthing myfeds:**\n__{e}__', 10)
+                await edit_delete(
+                    catevent, f"**Error while fecthing myfeds:**\n__{e}__", 10
+                )
             await event.client.send_read_acknowledge(conv.chat_id)
             conv.cancel()
         if not fedidstoadd:
@@ -415,7 +417,7 @@ async def quote_search(event):
             event, "__There is no such fedgroup in your database.__"
         )
     if output != "" and fedgroup:
-        output = f'**The list of feds in the category** `{fedgroup}` **are:**\n{output}'
+        output = f"**The list of feds in the category** `{fedgroup}` **are:**\n{output}"
 
     elif output != "":
         output = "**The list of all feds in your database are :**\n" + output
@@ -445,7 +447,7 @@ async def fetch_fedinfo(event):
     catevent = await edit_or_reply(event, "`Fetching info about given fed...`")
     async with event.client.conversation(rose) as conv:
         try:
-            await conv.send_message(f'/fedinfo {input_str}')
+            await conv.send_message(f"/fedinfo {input_str}")
             response = await conv.get_response()
             await catevent.edit(response.text)
         except YouBlockedUserError:
@@ -455,7 +457,9 @@ async def fetch_fedinfo(event):
                 10,
             )
         except Exception as e:
-            await edit_delete(catevent, f'**Error while fecthing fedinfo:**\n__{e}__', 10)
+            await edit_delete(
+                catevent, f"**Error while fecthing fedinfo:**\n__{e}__", 10
+            )
         await event.client.send_read_acknowledge(conv.chat_id)
         conv.cancel()
 
@@ -479,10 +483,10 @@ async def fetch_fedinfo(event):
     catevent = await edit_or_reply(event, "`Fetching admins list of given fed...`")
     async with event.client.conversation(rose) as conv:
         try:
-            await conv.send_message(f'/fedadmins {input_str}')
+            await conv.send_message(f"/fedadmins {input_str}")
             response = await conv.get_response()
             await catevent.edit(
-                f'**Fedid:** ```{input_str}```\n\n{response.text}'
+                f"**Fedid:** ```{input_str}```\n\n{response.text}"
                 if input_str
                 else response.text
             )
